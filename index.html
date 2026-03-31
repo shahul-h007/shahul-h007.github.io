@@ -47,6 +47,7 @@ body.hovering #cursor-dot{background:var(--pink);box-shadow:0 0 12px var(--pink)
 .nav-links a:hover{color:var(--indigo);}
 .nav-cta{padding:.5rem 1.2rem;background:linear-gradient(135deg,var(--indigo),var(--pink));border:none;border-radius:8px;color:#fff;font-weight:600;font-size:.85rem;cursor:none;transition:all .3s;box-shadow:var(--glow-indigo);text-decoration:none;}
 .nav-cta:hover{transform:translateY(-2px);box-shadow:var(--glow-pink);}
+.mobile-dock{display:none;}
 
 /* BASE */
 section{position:relative;z-index:1;}
@@ -206,11 +207,89 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 
 /* RESPONSIVE */
 @media(max-width:768px){
-  .about-grid,.contact-grid,.skills-outer-grid{grid-template-columns:1fr;}
-  .hero-stats{gap:2rem;} .nav-links{display:none;}
-  #hero{padding:0 6%;padding-top:90px;}
+  body{cursor:auto;padding-bottom:92px;background:
+    radial-gradient(circle at top, rgba(99,102,241,0.14), transparent 30%),
+    linear-gradient(180deg,var(--bg2),var(--bg));
+  }
+  #cursor-dot,#cursor-outline{display:none;}
+  #three-canvas{opacity:.45;}
+  .navbar-custom{padding:.9rem 1rem;border-bottom:none;background:rgba(2,6,23,0.6);}
+  .nav-links,.nav-cta{display:none;}
+  .nav-logo{font-size:1.15rem;}
+  #hero{padding:0 1rem;padding-top:88px;min-height:auto;}
+  .hero-badge{font-size:.7rem;padding:.35rem .8rem;}
+  .hero-name{font-size:clamp(3rem,18vw,4.4rem);}
+  .hero-type{min-height:2rem;font-size:1.05rem;}
+  .hero-desc{font-size:.95rem;line-height:1.75;max-width:none;}
+  .hero-btns{flex-direction:column;align-items:stretch;}
+  .btn-primary-glow,.btn-ghost{width:100%;justify-content:center;padding:.95rem 1.2rem;}
+  .hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;margin-top:2.2rem;}
+  .stat-item{padding:1rem;border-radius:16px;background:rgba(255,255,255,0.04);border:1px solid var(--glass-border);backdrop-filter:blur(12px);}
+  .stat-number{font-size:1.65rem;}
+  .stat-label{font-size:.72rem;line-height:1.4;}
+  .hero-scroll-hint{display:none;}
+  .about-grid,.contact-grid,.skills-outer-grid{grid-template-columns:1fr;gap:1.5rem;}
+  .about-photo-wrap{max-width:320px;margin:0 auto;}
+  .about-float-badge{position:static;margin-top:1rem;display:inline-block;}
   .skill-cards-grid{grid-template-columns:1fr;}
   .brands-grid{grid-template-columns:1fr;}
+  .gd-gallery,.gd-gallery.open{grid-template-columns:1fr 1fr;}
+  .youtube-wrapper{margin-top:1.75rem;border-radius:16px;}
+  #about,#projects,#brands,#skills,#content,#contact{
+    margin:0 12px 16px;
+    padding:3.5rem 1rem;
+    border-radius:24px;
+    border:1px solid rgba(255,255,255,0.08);
+    background:linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.025));
+    backdrop-filter:blur(10px);
+  }
+  .glass-card,.brand-card,.lang-panel-card,.skill-card{padding:1.35rem;border-radius:16px;}
+  .contact-email{font-size:.8rem;padding:.9rem 1rem;overflow-wrap:anywhere;}
+  .social-links{flex-wrap:wrap;}
+  .form-control-custom{padding:.95rem 1rem;font-size:.92rem;}
+  .modal-dialog{margin:1rem;}
+  .modal-visual{aspect-ratio:5/4;font-size:3rem;}
+  footer{padding:2.5rem 1rem 6.5rem;}
+  .mobile-dock{
+    display:flex;
+    position:fixed;
+    left:12px;
+    right:12px;
+    bottom:12px;
+    z-index:1100;
+    gap:.45rem;
+    padding:.55rem;
+    border-radius:20px;
+    background:rgba(2,6,23,0.82);
+    border:1px solid rgba(255,255,255,0.1);
+    backdrop-filter:blur(18px);
+    box-shadow:0 14px 36px rgba(0,0,0,0.35);
+  }
+  .mobile-dock a{
+    flex:1;
+    min-width:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:.22rem;
+    padding:.6rem .35rem;
+    border-radius:14px;
+    text-decoration:none;
+    color:var(--muted);
+    font-family:var(--font-mono);
+    font-size:.58rem;
+    letter-spacing:.35px;
+    transition:all .25s;
+    background:transparent;
+  }
+  .mobile-dock a i{font-size:1rem;}
+  .mobile-dock a.active,
+  .mobile-dock a:hover{
+    color:#fff;
+    background:linear-gradient(135deg,rgba(99,102,241,0.25),rgba(236,72,153,0.2));
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,0.08);
+  }
 }
 [data-aos]{pointer-events:auto!important;}
 </style>
@@ -255,7 +334,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
       <a href="#contact" class="btn-ghost"><i class="bi bi-send"></i>Get in Touch</a>
     </div>
     <div class="hero-stats">
-      <div class="stat-item"><span class="stat-number">2</span><span class="stat-label">Completed Projects</span></div>
+      <div class="stat-item"><span class="stat-number">1</span><span class="stat-label">Completed Project</span></div>
       <div class="stat-item"><span class="stat-number">3</span><span class="stat-label">Brands Building</span></div>
       <div class="stat-item"><span class="stat-number">1K+</span><span class="stat-label">YT Subscribers</span></div>
       <div class="stat-item"><span class="stat-number">∞</span><span class="stat-label">Ideas</span></div>
@@ -317,37 +396,71 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
     <div class="fancy-divider mx-auto"></div>
     <p style="color:var(--muted);max-width:480px;margin:0 auto;font-size:.95rem;line-height:1.8;">One completed project — built, shipped, and real.</p>
   </div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.75rem;max-width:900px;margin:2.5rem auto 0;">
-
-    <div class="glass-card" data-aos="fade-up" data-aos-delay="0" onclick="openModal('modal-borrowbox')" style="cursor:none;">
+  <div style="max-width:540px;margin:2.5rem auto 0;" data-aos="fade-up" data-aos-delay="80">
+    <div class="glass-card" onclick="openModal('modal-borrowbox')" style="cursor:none;">
       <div class="project-icon" style="background:rgba(99,102,241,0.15);">📦</div>
       <span class="card-tag">App · Web · Final Year Project</span>
       <h4 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:.6rem;color:#f1f5f9;">Borrow Box</h4>
       <p style="color:var(--muted);font-size:.9rem;line-height:1.75;margin-bottom:1.2rem;">A lending and borrowing platform where users can share everyday items with people nearby. Built with a Flutter mobile app, a Django backend, and an HTML/CSS web view for shops.</p>
       <div class="project-stack">
-        <span class="stack-dot">Flutter</span><span class="stack-dot">Python / Django</span>
-        <span class="stack-dot">SQL</span><span class="stack-dot">HTML / CSS</span>
+        <span class="stack-dot">Flutter</span>
+        <span class="stack-dot">Python / Django</span>
+        <span class="stack-dot">SQL</span>
+        <span class="stack-dot">HTML / CSS</span>
       </div>
       <span class="project-link">View Details <i class="bi bi-arrow-right"></i></span>
     </div>
-
-    <div class="glass-card" data-aos="fade-up" data-aos-delay="100" onclick="openModal('modal-devverse')" style="cursor:none;border-color:rgba(99,102,241,0.2);">
-      <div style="position:absolute;top:1.2rem;right:1.2rem;">
-        <span style="font-size:.68rem;font-family:var(--font-mono);background:linear-gradient(135deg,var(--indigo),var(--pink));color:#fff;padding:.2rem .7rem;border-radius:99px;letter-spacing:.5px;">SOLO</span>
-      </div>
-      <div class="project-icon" style="background:linear-gradient(135deg,rgba(99,102,241,0.2),rgba(236,72,153,0.15));">🎮</div>
-      <span class="card-tag">Mobile Game · Flutter</span>
+  </div>
+  <div style="max-width:540px;margin:1.5rem auto 0;" data-aos="fade-up" data-aos-delay="140">
+    <div class="glass-card" onclick="openModal('modal-devverse')" style="cursor:none;">
+      <div class="project-icon" style="background:rgba(236,72,153,0.15);">🎮</div>
+      <span class="card-tag">Mobile Game · Solo Build</span>
       <h4 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:.6rem;color:#f1f5f9;">Devverse</h4>
-      <p style="color:var(--muted);font-size:.9rem;line-height:1.75;margin-bottom:1.2rem;">An idle/tycoon mobile game where players build and grow their own game studio. Designed, developed, and release-prepared entirely as a solo project — from concept to Android build pipeline.</p>
+      <p style="color:var(--muted);font-size:.9rem;line-height:1.75;margin-bottom:1.2rem;">A mobile idle studio-builder game where players build their own game company, manage upgrades, progression systems, trading loops, and account-backed saves. Built as a solo Flutter project from concept to release preparation.</p>
       <div class="project-stack">
-        <span class="stack-dot">Flutter</span><span class="stack-dot">Dart</span>
-        <span class="stack-dot">Supabase</span><span class="stack-dot">AdMob</span><span class="stack-dot">Local Storage</span>
+        <span class="stack-dot">Flutter</span>
+        <span class="stack-dot">Dart</span>
+        <span class="stack-dot">Supabase Auth</span>
+        <span class="stack-dot">AdMob Ready</span>
       </div>
       <span class="project-link">View Details <i class="bi bi-arrow-right"></i></span>
     </div>
-
   </div>
 </section>
+
+<!-- Devverse Modal -->
+<div class="modal fade" id="modal-devverse" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content p-1">
+      <div class="modal-header px-4 pt-4 pb-3" style="border-bottom:1px solid var(--glass-border)!important;">
+        <h5 class="modal-title">🎮 Devverse</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body px-4 py-3">
+        <div class="modal-visual" style="background:linear-gradient(135deg,rgba(236,72,153,0.18),rgba(99,102,241,0.16));">🎮</div>
+        <p>Devverse is a mobile game app where players build their own game studio, grow systems over time, unlock upgrades, and progress through an idle management loop built around momentum and strategy.</p><br>
+        <p>I built it as a <strong style="color:var(--text)">solo Flutter project</strong>, handling the full app flow from UI structure and gameplay systems to persistent saves, authentication, release preparation, and mobile-first polish.</p><br>
+        <p>The app includes <strong style="color:var(--text)">login and registration with Supabase</strong>, local progress saving, settings and audio controls, trading and progression systems, and Android release preparation with monetization-ready AdMob integration.</p>
+        <div class="team-members">
+          <h6>My Contribution</h6>
+          <div class="team-row">
+            <span class="team-pill"><i class="bi bi-person-fill" style="color:var(--pink);"></i>Solo Developer</span>
+            <span class="team-pill"><i class="bi bi-phone-fill" style="color:var(--pink);"></i>Mobile App UI</span>
+            <span class="team-pill"><i class="bi bi-controller" style="color:var(--pink);"></i>Game Systems</span>
+            <span class="team-pill"><i class="bi bi-shield-lock-fill" style="color:var(--pink);"></i>Auth &amp; Release Setup</span>
+          </div>
+        </div>
+        <div class="tech-stack-row mt-3">
+          <span class="tech-badge">Flutter</span><span class="tech-badge">Dart</span>
+          <span class="tech-badge">Supabase</span><span class="tech-badge">Local Storage</span><span class="tech-badge">AdMob</span>
+        </div>
+      </div>
+      <div class="modal-footer px-4 pb-4" style="border-top:1px solid var(--glass-border)!important;">
+        <button class="btn-ghost" data-bs-dismiss="modal" style="cursor:none;">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- Borrow Box Modal -->
 <div class="modal fade" id="modal-borrowbox" tabindex="-1">
@@ -373,56 +486,6 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
         <div class="tech-stack-row mt-3">
           <span class="tech-badge">Flutter</span><span class="tech-badge">Python</span>
           <span class="tech-badge">Django</span><span class="tech-badge">SQL</span><span class="tech-badge">HTML/CSS</span>
-        </div>
-      </div>
-      <div class="modal-footer px-4 pb-4" style="border-top:1px solid var(--glass-border)!important;">
-        <button class="btn-ghost" data-bs-dismiss="modal" style="cursor:none;">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Devverse Modal -->
-<div class="modal fade" id="modal-devverse" tabindex="-1">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content p-1">
-      <div class="modal-header px-4 pt-4 pb-3" style="border-bottom:1px solid var(--glass-border)!important;">
-        <h5 class="modal-title">🎮 Devverse — Mobile Idle Tycoon Game</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body px-4 py-3">
-        <div class="modal-visual" style="background:linear-gradient(135deg,rgba(99,102,241,0.25),rgba(236,72,153,0.15));">🎮</div>
-
-        <p style="color:var(--text);font-size:1rem;font-weight:600;margin-bottom:.5rem;font-family:var(--font-display);">Build your studio. Grow your empire.</p>
-        <p>Devverse is a mobile idle/tycoon game where players construct and scale their own game development studio — managing upgrades, resources, skills, and progression systems in a richly designed mobile environment. Built entirely solo, from first line of code to release-ready Android build.</p>
-
-        <div style="margin:1.5rem 0;padding:1.2rem;background:rgba(99,102,241,0.07);border:1px solid rgba(99,102,241,0.15);border-radius:14px;">
-          <p style="font-family:var(--font-mono);font-size:.75rem;color:var(--indigo);letter-spacing:2px;text-transform:uppercase;margin-bottom:.9rem;">Key Features</p>
-          <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:.6rem;">
-            <li style="display:flex;align-items:flex-start;gap:.6rem;font-size:.88rem;color:var(--muted);"><span style="color:var(--indigo);margin-top:2px;">▸</span>Full Flutter mobile application with responsive mobile-first UI</li>
-            <li style="display:flex;align-items:flex-start;gap:.6rem;font-size:.88rem;color:var(--muted);"><span style="color:var(--indigo);margin-top:2px;">▸</span>Real user authentication — login and registration via Supabase</li>
-            <li style="display:flex;align-items:flex-start;gap:.6rem;font-size:.88rem;color:var(--muted);"><span style="color:var(--indigo);margin-top:2px;">▸</span>Persistent save system — player progress stored locally across sessions</li>
-            <li style="display:flex;align-items:flex-start;gap:.6rem;font-size:.88rem;color:var(--muted);"><span style="color:var(--indigo);margin-top:2px;">▸</span>Full game economy — resource management, upgrades, and progression loops</li>
-            <li style="display:flex;align-items:flex-start;gap:.6rem;font-size:.88rem;color:var(--muted);"><span style="color:var(--indigo);margin-top:2px;">▸</span>Trading and investing section, settings system, background music and audio controls</li>
-            <li style="display:flex;align-items:flex-start;gap:.6rem;font-size:.88rem;color:var(--muted);"><span style="color:var(--indigo);margin-top:2px;">▸</span>Ad-ready monetization via Google AdMob — production Android release pipeline configured</li>
-          </ul>
-        </div>
-
-        <p style="font-family:var(--font-mono);font-size:.75rem;color:var(--indigo);letter-spacing:2px;text-transform:uppercase;margin-bottom:.75rem;">My Contribution</p>
-        <p>Every aspect of Devverse — concept, UI design, game logic, authentication, save systems, monetization integration, and release setup — was designed and developed solely by me. This project demonstrates end-to-end ownership of a production-oriented mobile product.</p>
-
-        <div class="tech-stack-row mt-3">
-          <span class="tech-badge">Flutter</span>
-          <span class="tech-badge">Dart</span>
-          <span class="tech-badge">Supabase Auth</span>
-          <span class="tech-badge">Local Storage</span>
-          <span class="tech-badge">Google AdMob</span>
-          <span class="tech-badge">Android Build Pipeline</span>
-        </div>
-
-        <div style="margin-top:1.5rem;padding:1rem 1.2rem;background:rgba(236,72,153,0.06);border:1px solid rgba(236,72,153,0.15);border-radius:10px;display:flex;align-items:center;gap:.75rem;">
-          <i class="bi bi-clock-history" style="color:var(--pink);font-size:1.1rem;"></i>
-          <span style="font-family:var(--font-mono);font-size:.78rem;color:var(--muted);">Case Study Coming Soon</span>
         </div>
       </div>
       <div class="modal-footer px-4 pb-4" style="border-top:1px solid var(--glass-border)!important;">
@@ -555,8 +618,8 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
       <div class="contact-info">
         <h3>Drop me a<br><span class="gradient-text">message.</span></h3>
         <p>Internship opportunities, collabs, project ideas, or just saying hi — my inbox is open.</p>
-        <a href="/cdn-cgi/l/email-protection#c1aaa8b2a9a0a9b4adf0f3f281a6aca0a8adefa2aeac" class="contact-email">
-          <i class="bi bi-envelope-fill" style="color:var(--indigo);font-size:1.1rem;"></i><span class="__cf_email__" data-cfemail="03686a706b626b766f32313043646e626a6f2d606c6e">[email&#160;protected]</span>
+        <a href="mailto:kishahul123@gmail.com" class="contact-email">
+          <i class="bi bi-envelope-fill" style="color:var(--indigo);font-size:1.1rem;"></i>kishahul123@gmail.com
         </a>
         <div class="social-links">
           <a href="https://github.com/shahul-h007" class="social-btn" target="_blank" title="GitHub"><i class="bi bi-github"></i></a>
@@ -579,6 +642,14 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   </div>
 </section>
 
+<nav class="mobile-dock" aria-label="Mobile navigation">
+  <a href="#hero" data-dock-target="hero"><i class="bi bi-house-door"></i><span>Home</span></a>
+  <a href="#about" data-dock-target="about"><i class="bi bi-person"></i><span>About</span></a>
+  <a href="#projects" data-dock-target="projects"><i class="bi bi-grid-3x3-gap"></i><span>Work</span></a>
+  <a href="#skills" data-dock-target="skills"><i class="bi bi-lightning"></i><span>Skills</span></a>
+  <a href="#contact" data-dock-target="contact"><i class="bi bi-chat-dots"></i><span>Contact</span></a>
+</nav>
+
 <!-- FOOTER -->
 <footer>
   <a class="nav-logo" href="#hero" style="text-decoration:none;display:inline-block;margin-bottom:1rem;">SHAHUL<span style="color:var(--pink)">.</span></a>
@@ -586,7 +657,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   <p style="margin-top:.5rem;font-size:.75rem;">BCA Student · Entrepreneur · @therigspace · Octave Zero</p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
@@ -635,15 +706,28 @@ function openModal(id){const el=document.getElementById(id);if(!el)return;new bo
 
 // CONTACT
 function sendMessage(){
-  const n=document.getElementById('contact-name').value.trim();
-  const e=document.getElementById('contact-email').value.trim();
-  const s=document.getElementById('contact-subject').value.trim();
-  const msg=document.getElementById('contact-message').value.trim();
-  if(!n||!e||!msg){alert('Please fill in your name, email and message.');return;}
-  const subject=encodeURIComponent(s||'Portfolio Enquiry from '+n);
-  const body=encodeURIComponent('Name: '+n+'\nEmail: '+e+'\n\n'+msg);
-  window.open('https://mail.google.com/mail/?view=cm&to=kishahul123@gmail.com&su='+subject+'&body='+body,'_blank');
+  const n=document.getElementById('contact-name').value;
+  const e=document.getElementById('contact-email').value;
+  const msg=document.getElementById('contact-message').value;
+  if(!n||!e||!msg){alert('Please fill in all required fields.');return;}
+  const btn=document.getElementById('send-btn');
+  btn.innerHTML='<i class="bi bi-hourglass-split"></i> Sending...';
+  setTimeout(()=>{btn.style.display='none';document.getElementById('form-feedback').style.display='block';},900);
 }
+
+// MOBILE DOCK ACTIVE STATE
+const dockLinks=[...document.querySelectorAll('.mobile-dock a')];
+const dockSections=dockLinks.map(link=>document.getElementById(link.dataset.dockTarget)).filter(Boolean);
+function updateDockState(){
+  const marker=window.scrollY+window.innerHeight*0.35;
+  let activeId='hero';
+  dockSections.forEach(section=>{
+    if(section.offsetTop<=marker){activeId=section.id;}
+  });
+  dockLinks.forEach(link=>link.classList.toggle('active',link.dataset.dockTarget===activeId));
+}
+updateDockState();
+window.addEventListener('scroll',updateDockState,{passive:true});
 
 // THREE.JS
 (function(){
@@ -691,4 +775,14 @@ function sendMessage(){
     octa.rotation.y=t*.32;octa.rotation.z=t*.11;
     pyramid.position.y=6+Math.sin(t*.55)*1.4;
     torus.position.y=-4+Math.sin(t*.4+1)*1.2;
-    icosa.positio
+    icosa.position.y=-14+Math.sin(t*.6+2)*1;
+    octa.position.y=-8+Math.sin(t*.35+.5)*.9;
+    cx+=(tx-cx)*.04;cy+=(ty-cy)*.04;
+    scene.rotation.y=cx*.14;scene.rotation.x=cy*.1;
+    renderer.render(scene,camera);
+  }
+  animate();
+})();
+</script>
+</body>
+</html>
