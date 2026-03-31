@@ -291,7 +291,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
     box-shadow:inset 0 0 0 1px rgba(255,255,255,0.08);
   }
 }
-[data-aos]{pointer-events:auto!important;}
+[data-aos]{opacity:1!important;transform:none!important;pointer-events:auto!important;}
 </style>
 </head>
 <body>
@@ -661,7 +661,9 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
-AOS.init({duration:700,once:true,easing:'ease-out-cubic',offset:60});
+if (window.AOS) {
+  AOS.init({duration:700,once:true,easing:'ease-out-cubic',offset:60});
+}
 
 // CURSOR
 const dot=document.getElementById('cursor-dot'),outline=document.getElementById('cursor-outline');
