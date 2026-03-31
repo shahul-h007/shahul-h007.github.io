@@ -211,12 +211,30 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
     radial-gradient(circle at top, rgba(99,102,241,0.14), transparent 30%),
     linear-gradient(180deg,var(--bg2),var(--bg));
   }
+  body::before{display:none;}
   #cursor-dot,#cursor-outline{display:none;}
-  #three-canvas{opacity:.45;}
-  .navbar-custom{padding:.9rem 1rem;border-bottom:none;background:rgba(2,6,23,0.6);}
+  #three-canvas,.orb{display:none!important;}
+  .navbar-custom{
+    padding:.9rem 1rem;
+    border-bottom:none;
+    background:rgba(2,6,23,0.88);
+    position:sticky;
+    top:0;
+  }
+  section,footer,.navbar-custom{
+    position:relative;
+    z-index:5;
+    opacity:1!important;
+    visibility:visible!important;
+  }
+  section *,footer *,nav *{
+    visibility:visible!important;
+  }
   .nav-links,.nav-cta{display:none;}
   .nav-logo{font-size:1.15rem;}
   #hero{padding:0 1rem;padding-top:88px;min-height:auto;}
+  .hero-name,.section-title,.modal-title,.brand-card h4,.skill-card h5,.lang-panel-title,.contact-info h3{color:#f8fafc;}
+  .hero-desc,.contact-info p,.brand-card p,.skill-card p,.modal-body p,.lang-panel-hint,.section-label,.stat-label{opacity:1;color:var(--muted);}
   .hero-badge{font-size:.7rem;padding:.35rem .8rem;}
   .hero-name{font-size:clamp(3rem,18vw,4.4rem);}
   .hero-type{min-height:2rem;font-size:1.05rem;}
