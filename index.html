@@ -654,10 +654,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
       </div>
     </div>
     <div data-aos="fade-left">
-      <form class="glass-card" style="padding:2.5rem;" action="https://formsubmit.co/kishahul123@gmail.com" method="POST">
-        <input type="hidden" name="_subject" value="New message from Shahul portfolio"/>
-        <input type="hidden" name="_captcha" value="false"/>
-        <input type="hidden" name="_template" value="table"/>
+      <form class="glass-card" style="padding:2.5rem;" onsubmit="sendMessage(event)">
         <div class="form-group"><label class="form-label-custom" for="contact-name">YOUR NAME</label><input type="text" class="form-control-custom" placeholder="Your name" id="contact-name" name="name" required/></div>
         <div class="form-group"><label class="form-label-custom" for="contact-email">EMAIL ADDRESS</label><input type="email" class="form-control-custom" placeholder="you@example.com" id="contact-email" name="email" required/></div>
         <div class="form-group"><label class="form-label-custom" for="contact-subject">SUBJECT</label><input type="text" class="form-control-custom" placeholder="Internship / Collab / Just saying hi" id="contact-subject" name="subject"/></div>
@@ -748,6 +745,18 @@ function toggleGDGallery(card){
 
 // MODAL
 function openModal(id){const el=document.getElementById(id);if(!el)return;new bootstrap.Modal(el).show();}
+
+// CONTACT
+function sendMessage(event){
+  event.preventDefault();
+  const name=document.getElementById('contact-name').value.trim();
+  const email=document.getElementById('contact-email').value.trim();
+  const subject=document.getElementById('contact-subject').value.trim()||'Portfolio message';
+  const message=document.getElementById('contact-message').value.trim();
+  if(!name||!email||!message){alert('Please fill in your name, email and message.');return;}
+  const body=`Name: ${name}\nEmail: ${email}\n\n${message}`;
+  window.location.href=`mailto:kishahul123@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
 
 // MOBILE DOCK ACTIVE STATE
 const dockLinks=[...document.querySelectorAll('.mobile-dock a')];
