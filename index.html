@@ -654,14 +654,16 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
       </div>
     </div>
     <div data-aos="fade-left">
-      <div class="glass-card" style="padding:2.5rem;">
-        <div class="form-group"><label class="form-label-custom">YOUR NAME</label><input type="text" class="form-control-custom" placeholder="Your name" id="contact-name"/></div>
-        <div class="form-group"><label class="form-label-custom">EMAIL ADDRESS</label><input type="email" class="form-control-custom" placeholder="you@example.com" id="contact-email"/></div>
-        <div class="form-group"><label class="form-label-custom">SUBJECT</label><input type="text" class="form-control-custom" placeholder="Internship / Collab / Just saying hi" id="contact-subject"/></div>
-        <div class="form-group"><label class="form-label-custom">MESSAGE</label><textarea class="form-control-custom" rows="5" placeholder="Tell me about your idea or opportunity..." id="contact-message"></textarea></div>
-        <button class="btn-primary-glow w-100 justify-content-center" id="send-btn" style="border:none;margin-top:.5rem;" onclick="sendMessage()"><i class="bi bi-send-fill"></i>Send Message</button>
-        <div id="form-feedback" style="display:none;margin-top:1rem;text-align:center;font-family:var(--font-mono);font-size:.85rem;color:var(--indigo);">✓ Message sent! I'll get back to you soon.</div>
-      </div>
+      <form class="glass-card" style="padding:2.5rem;" action="https://formsubmit.co/kishahul123@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New message from Shahul portfolio"/>
+        <input type="hidden" name="_captcha" value="false"/>
+        <input type="hidden" name="_template" value="table"/>
+        <div class="form-group"><label class="form-label-custom" for="contact-name">YOUR NAME</label><input type="text" class="form-control-custom" placeholder="Your name" id="contact-name" name="name" required/></div>
+        <div class="form-group"><label class="form-label-custom" for="contact-email">EMAIL ADDRESS</label><input type="email" class="form-control-custom" placeholder="you@example.com" id="contact-email" name="email" required/></div>
+        <div class="form-group"><label class="form-label-custom" for="contact-subject">SUBJECT</label><input type="text" class="form-control-custom" placeholder="Internship / Collab / Just saying hi" id="contact-subject" name="subject"/></div>
+        <div class="form-group"><label class="form-label-custom" for="contact-message">MESSAGE</label><textarea class="form-control-custom" rows="5" placeholder="Tell me about your idea or opportunity..." id="contact-message" name="message" required></textarea></div>
+        <button type="submit" class="btn-primary-glow w-100 justify-content-center" id="send-btn" style="border:none;margin-top:.5rem;"><i class="bi bi-send-fill"></i>Send Message</button>
+      </form>
     </div>
   </div>
 </section>
@@ -746,17 +748,6 @@ function toggleGDGallery(card){
 
 // MODAL
 function openModal(id){const el=document.getElementById(id);if(!el)return;new bootstrap.Modal(el).show();}
-
-// CONTACT
-function sendMessage(){
-  const n=document.getElementById('contact-name').value;
-  const e=document.getElementById('contact-email').value;
-  const msg=document.getElementById('contact-message').value;
-  if(!n||!e||!msg){alert('Please fill in all required fields.');return;}
-  const btn=document.getElementById('send-btn');
-  btn.innerHTML='<i class="bi bi-hourglass-split"></i> Sending...';
-  setTimeout(()=>{btn.style.display='none';document.getElementById('form-feedback').style.display='block';},900);
-}
 
 // MOBILE DOCK ACTIVE STATE
 const dockLinks=[...document.querySelectorAll('.mobile-dock a')];
