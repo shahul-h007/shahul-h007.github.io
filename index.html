@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Portfolio of Shahul Hameed KI, a BCA graduate from Kerala building software projects, creative brands, and Chronyx."/>
 <title>Shahul — Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
@@ -113,6 +114,8 @@ section{position:relative;z-index:1;}
 .stack-dot{font-size:.7rem;font-family:var(--font-mono);padding:.2rem .6rem;border-radius:5px;background:rgba(255,255,255,0.05);border:1px solid var(--glass-border);color:var(--muted);}
 .project-link{font-size:.82rem;font-family:var(--font-mono);color:var(--indigo);text-decoration:none;display:inline-flex;align-items:center;gap:.3rem;transition:gap .25s,color .25s;}
 .project-link:hover{gap:.6rem;color:var(--pink);}
+.project-card-button{width:100%;display:block;text-align:left;color:inherit;font:inherit;}
+.project-card-button:focus-visible{outline:2px solid var(--indigo);outline-offset:4px;}
 
 /* BRANDS */
 #brands{padding:8rem 5%;}
@@ -320,13 +323,13 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 </head>
 <body>
 
-<div id="cursor-dot"></div>
-<div id="cursor-outline"></div>
-<div id="scroll-progress"></div>
-<canvas id="three-canvas"></canvas>
+<div id="cursor-dot" aria-hidden="true"></div>
+<div id="cursor-outline" aria-hidden="true"></div>
+<div id="scroll-progress" aria-hidden="true"></div>
+<canvas id="three-canvas" aria-hidden="true"></canvas>
 
 <!-- NAVBAR -->
-<nav class="navbar-custom d-flex justify-content-between align-items-center">
+<nav class="navbar-custom d-flex justify-content-between align-items-center" aria-label="Primary navigation">
   <a class="nav-logo" href="#hero">SHAHUL<span style="color:var(--pink)">.</span></a>
   <ul class="nav-links mb-0">
     <li><a href="#about">About</a></li>
@@ -338,13 +341,15 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   <a href="#contact" class="nav-cta">Let's Talk</a>
 </nav>
 
+<main>
+
 <!-- HERO -->
-<section id="hero">
+<section id="hero" aria-labelledby="hero-title">
   <div class="orb orb-indigo" style="top:-100px;left:-100px;"></div>
   <div class="orb orb-pink" style="top:200px;right:-150px;"></div>
   <div style="position:relative;z-index:2;">
     <div class="hero-badge"><span class="dot"></span>Open to Opportunities &amp; Collaborations</div>
-    <h1 class="hero-name">Shahul</h1>
+    <h1 class="hero-name" id="hero-title">Shahul</h1>
     <div class="hero-roles">
       <span class="role-chip">BCA Graduate</span>
       <span class="role-chip">Software Engineer</span>
@@ -368,7 +373,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 </section>
 
 <!-- ABOUT -->
-<section id="about">
+<section id="about" aria-labelledby="about-title">
   <div class="about-grid">
     <div data-aos="fade-right" class="about-photo-wrap">
       <img
@@ -384,7 +389,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
     </div>
     <div data-aos="fade-left">
       <span class="section-label">Who I Am</span>
-      <h2 class="section-title">Creative tech guy who<br><span class="gradient-text">figures things out.</span></h2>
+      <h2 class="section-title" id="about-title">Creative tech guy who<br><span class="gradient-text">figures things out.</span></h2>
       <div class="fancy-divider"></div>
       <p style="color:var(--muted);line-height:1.85;font-size:.95rem;margin-bottom:1.1rem;">
         I'm Shahul, a BCA graduate from Calicut University, Kerala. I build software, design visuals, and edit videos — not because I have to, but because I genuinely enjoy creating things from scratch.
@@ -413,15 +418,15 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 </section>
 
 <!-- PROJECTS -->
-<section id="projects">
+<section id="projects" aria-labelledby="projects-title">
   <div class="text-center" data-aos="fade-up">
     <span class="section-label">Completed Work</span>
-    <h2 class="section-title">My <span class="gradient-text">Project</span></h2>
+    <h2 class="section-title" id="projects-title">My <span class="gradient-text">Project</span></h2>
     <div class="fancy-divider mx-auto"></div>
     <p style="color:var(--muted);max-width:480px;margin:0 auto;font-size:.95rem;line-height:1.8;">One completed project — built, shipped, and real.</p>
   </div>
   <div style="max-width:540px;margin:2.5rem auto 0;" data-aos="fade-up" data-aos-delay="80">
-    <div class="glass-card" onclick="openModal('modal-borrowbox')" style="cursor:none;">
+    <button type="button" class="glass-card project-card-button" onclick="openModal('modal-borrowbox')" style="cursor:none;" aria-haspopup="dialog" aria-controls="modal-borrowbox">
       <div class="project-icon" style="background:rgba(99,102,241,0.15);">📦</div>
       <span class="card-tag">App · Web · BCA Project</span>
       <h4 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:.6rem;color:#f1f5f9;">Borrow Box</h4>
@@ -433,10 +438,10 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
         <span class="stack-dot">HTML / CSS</span>
       </div>
       <span class="project-link">View Details <i class="bi bi-arrow-right"></i></span>
-    </div>
+    </button>
   </div>
   <div style="max-width:540px;margin:1.5rem auto 0;" data-aos="fade-up" data-aos-delay="140">
-    <div class="glass-card" onclick="openModal('modal-devverse')" style="cursor:none;">
+    <button type="button" class="glass-card project-card-button" onclick="openModal('modal-devverse')" style="cursor:none;" aria-haspopup="dialog" aria-controls="modal-devverse">
       <div class="project-icon" style="background:rgba(236,72,153,0.15);">🎮</div>
       <span class="card-tag">Mobile Game · Solo Build</span>
       <h4 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:.6rem;color:#f1f5f9;">Devverse</h4>
@@ -448,7 +453,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
         <span class="stack-dot">AdMob Ready</span>
       </div>
       <span class="project-link">View Details <i class="bi bi-arrow-right"></i></span>
-    </div>
+    </button>
   </div>
 </section>
 
@@ -458,7 +463,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
     <div class="modal-content p-1">
       <div class="modal-header px-4 pt-4 pb-3" style="border-bottom:1px solid var(--glass-border)!important;">
         <h5 class="modal-title">🎮 Devverse</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close Devverse details"></button>
       </div>
       <div class="modal-body px-4 py-3">
         <div class="modal-visual" style="background:linear-gradient(135deg,rgba(236,72,153,0.18),rgba(99,102,241,0.16));">🎮</div>
@@ -492,7 +497,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
     <div class="modal-content p-1">
       <div class="modal-header px-4 pt-4 pb-3" style="border-bottom:1px solid var(--glass-border)!important;">
         <h5 class="modal-title">📦 Borrow Box</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close Borrow Box details"></button>
       </div>
       <div class="modal-body px-4 py-3">
         <div class="modal-visual" style="background:linear-gradient(135deg,rgba(99,102,241,0.2),rgba(34,211,238,0.1));">📦</div>
@@ -520,10 +525,10 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 </div>
 
 <!-- BRANDS & CONCEPTS -->
-<section id="brands">
+<section id="brands" aria-labelledby="brands-title">
   <div class="text-center" data-aos="fade-up">
     <span class="section-label">Ventures</span>
-    <h2 class="section-title">Brands &amp; <span class="gradient-text">Concepts</span></h2>
+    <h2 class="section-title" id="brands-title">Brands &amp; <span class="gradient-text">Concepts</span></h2>
     <div class="fancy-divider mx-auto"></div>
     <p class="brands-intro"><span>I'm not just building projects —</span> I'm building brands.</p>
   </div>
@@ -563,10 +568,10 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 </section>
 
 <!-- SKILLS -->
-<section id="skills">
+<section id="skills" aria-labelledby="skills-title">
   <div class="text-center" data-aos="fade-up">
     <span class="section-label">Arsenal</span>
-    <h2 class="section-title">Skills &amp; <span class="gradient-text">Capabilities</span></h2>
+    <h2 class="section-title" id="skills-title">Skills &amp; <span class="gradient-text">Capabilities</span></h2>
     <div class="fancy-divider mx-auto"></div>
     <p style="color:var(--muted);max-width:500px;margin:0 auto;font-size:.95rem;line-height:1.8;">Languages I code in, and the things I'm actually good at.</p>
   </div>
@@ -616,24 +621,24 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 </section>
 
 <!-- YOUTUBE -->
-<section id="content">
+<section id="content" aria-labelledby="content-title">
   <div class="text-center" data-aos="fade-up">
     <span class="section-label">Creator</span>
-    <h2 class="section-title">Octave Zero <span class="gradient-text">Channel</span></h2>
+    <h2 class="section-title" id="content-title">Octave Zero <span class="gradient-text">Channel</span></h2>
     <div class="fancy-divider mx-auto"></div>
     <p style="color:var(--muted);max-width:500px;margin:0 auto;font-size:.95rem;line-height:1.8;">A tech channel where I break down products, ideas and topics that genuinely interest me.</p>
   </div>
   <div class="youtube-wrapper" data-aos="zoom-in" data-aos-delay="100">
     <div class="youtube-overlay-label"><i class="bi bi-youtube"></i>Octave Zero</div>
-    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Octave Zero" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Octave Zero" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact">
+<section id="contact" aria-labelledby="contact-title">
   <div class="text-center" data-aos="fade-up">
     <span class="section-label">Let's Connect</span>
-    <h2 class="section-title">Have an idea?<br><span class="gradient-text">Let's talk.</span></h2>
+    <h2 class="section-title" id="contact-title">Have an idea?<br><span class="gradient-text">Let's talk.</span></h2>
     <div class="fancy-divider mx-auto"></div>
   </div>
   <div class="contact-grid">
@@ -645,11 +650,11 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
           <i class="bi bi-envelope-fill" style="color:var(--indigo);font-size:1.1rem;"></i>kishahul123@gmail.com
         </a>
         <div class="social-links">
-          <a href="https://github.com/shahul-h007" class="social-btn" target="_blank" title="GitHub"><i class="bi bi-github"></i></a>
-          <a href="https://www.linkedin.com/in/shahul-hameed-ki" class="social-btn" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
-          <a href="https://www.instagram.com/shaahul_h/" class="social-btn" target="_blank" title="Instagram"><i class="bi bi-instagram"></i></a>
-          <a href="https://www.youtube.com/channel/UCN5SyxnjwfdxckoGgTXDGWA" class="social-btn" target="_blank" title="YouTube"><i class="bi bi-youtube"></i></a>
-          <a href="https://x.com/Shahul_hmd404" class="social-btn" target="_blank" title="X / Twitter"><i class="bi bi-twitter-x"></i></a>
+          <a href="https://github.com/shahul-h007" class="social-btn" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub profile"><i class="bi bi-github"></i></a>
+          <a href="https://www.linkedin.com/in/shahul-hameed-ki" class="social-btn" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn profile"><i class="bi bi-linkedin"></i></a>
+          <a href="https://www.instagram.com/shaahul_h/" class="social-btn" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram profile"><i class="bi bi-instagram"></i></a>
+          <a href="https://www.youtube.com/channel/UCN5SyxnjwfdxckoGgTXDGWA" class="social-btn" target="_blank" rel="noopener noreferrer" title="YouTube" aria-label="YouTube channel"><i class="bi bi-youtube"></i></a>
+          <a href="https://x.com/Shahul_hmd404" class="social-btn" target="_blank" rel="noopener noreferrer" title="X / Twitter" aria-label="X profile"><i class="bi bi-twitter-x"></i></a>
         </div>
       </div>
     </div>
@@ -664,6 +669,8 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
     </div>
   </div>
 </section>
+
+</main>
 
 <nav class="mobile-dock" aria-label="Mobile navigation">
   <a href="#hero" data-dock-target="hero"><i class="bi bi-house-door"></i><span>Home</span></a>
